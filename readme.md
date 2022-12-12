@@ -3,5 +3,5 @@ This project is made with Post office API that asks for the PIN code of India an
 
 
 # Demo SnapShots
-![image](https://user-images.githubusercontent.com/85806664/206965570-5d6f1fd2-c528-470a-abf8-7caddb666743.png)
-![image](https://user-images.githubusercontent.com/85806664/206965614-966c991e-0669-46c0-ac49-c0a3d6c52a18.png)
+![image](https://user-images.githubusercontent.com/85806664/206966199-66ea647c-6383-4449-8e17-9d60422fb75b.png)
+![image](https://user-images.githubusercontent.com/85806664/206966154-551c25f5-7a7a-420d-bbfd-176172c55a11.png)
