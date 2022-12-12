@@ -31,7 +31,7 @@
               {% csrf_token %}
               <div class="col-auto">
                 <input type="text" name="pinInput" style="width:300px" class="form-control" id="inputPassword2"
-                  placeholder="Input PIN Code">
+                  placeholder="Input PIN Code" value="{{res_data.pin_code}}">
                 <div style="margin-left:5px">
                   <small class="text-muted">For eg. 100001</small>
                 </div>
@@ -43,6 +43,8 @@
 
             <div class="dataSection mt-4">
               {% comment %} Data to be displayed {% endcomment %}
+              {% if res_data.status %}
+
               <p style="margin-left:10px"><b>{{res_data.message}}</b></p>
               <table class="table table-hover">
                 <thead>
@@ -75,6 +77,10 @@
                   {% endfor %}
                 </tbody>
               </table>
+              {% comment %} {% else if res_data.status == False %}
+              <p class="text-muted text-center">Pin code do not exist. Please check your PIN Code and try again</p>
+              {% endcomment %}
+              {% endif %}
             </div>
           </div>
         </div>
