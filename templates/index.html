@@ -34,6 +34,40 @@
                     </div>
                 </form>
 
+                {% comment %} Data to be displayed {% endcomment %}
+                <p>{{res_data.message}}</p>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Branch Type</th>
+                        <th scope="col">State</th>
+                        <th scope="col">District</th>
+                        <th scope="col">Division</th>
+                        <th scope="col">Region</th>
+                        <th scope="col">Block</th>
+                        <th scope="col">Pin Code</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    
+                {% for data in res_data.name%}
+                      
+                      <tr>
+                        <th scope="row"></th>
+                        <td>{{data.Name}}</td>
+                        <td>{{data.BranchType}}</td>
+                        <td>{{data.Circle}}</td>
+                        <td>{{data.District}}</td>
+                        <td>{{data.Division}}</td>
+                        <td>{{data.Region}}</td>
+                        <td>{{data.Block}}</td>
+                        <td>{{data.Pincode}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
 
             </div>
           </div>
@@ -62,6 +96,7 @@
                       <button type="submit" class="btn btn-primary mb-3">Check</button>
                     </div>
                 </form>
+                
 
 
 
