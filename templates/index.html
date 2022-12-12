@@ -15,7 +15,7 @@
     <p class="h3 mb-4" style="text-align:center">Indian Post</p>
     <div class="accordion" id="accordionExample">
 
-
+      {% comment %} Working with search by PIN Code {% endcomment %}
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -23,7 +23,7 @@
             Search by PIN Code
           </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        <div id="collapseOne" class="accordion-collapse " aria-labelledby="headingOne"
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
             {% comment %} Creating the Input box {% endcomment %}
@@ -33,7 +33,7 @@
                 <input type="text" name="pinInput" style="width:300px" class="form-control" id="inputPassword2"
                   placeholder="Input PIN Code" value="{{res_data.pin_code}}">
                 <div style="margin-left:5px">
-                  <small class="text-muted">For eg. 100001</small>
+                  <small class="text-muted">For eg. 110001</small>
                 </div>
               </div>
               <div class="col-auto">
@@ -43,8 +43,8 @@
 
             <div class="dataSection mt-4">
               {% comment %} Data to be displayed {% endcomment %}
-              {% if res_data.status %}
 
+              {% if res_data.status %}
               <p style="margin-left:10px"><b>{{res_data.message}}</b></p>
               <table class="table table-hover">
                 <thead>
@@ -67,7 +67,7 @@
                     {% comment %} <th scope="row">{{i}}</th> {% endcomment %}
                     <td>{{data.Name}}</td>
                     <td>{{data.BranchType}}</td>
-                    <td>{{data.Circle}}</td>
+                    <td>{{data.State}}</td>
                     <td>{{data.District}}</td>
                     <td>{{data.Division}}</td>
                     <td>{{data.Region}}</td>
@@ -77,17 +77,14 @@
                   {% endfor %}
                 </tbody>
               </table>
-              {% comment %} {% else if res_data.status == False %}
-              <p class="text-muted text-center">Pin code do not exist. Please check your PIN Code and try again</p>
-              {% endcomment %}
               {% endif %}
             </div>
           </div>
         </div>
       </div>
 
-
-      <div class="accordion-item">
+      {% comment %} Search by Post office branch {% endcomment %}
+      {% comment %} <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -96,14 +93,16 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
           data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+          <div class="accordion-body"> {% endcomment %}
 
             {% comment %} Creating the Input box {% endcomment %}
-
-            <form class="row g-3">
+{% comment %} 
+            <form class="row g-3" method="POST" action="{% url 'post' %}">
+              {% csrf_token %}
               <div class="col-auto">
                 <input type="text" style="width:300px" class="form-control" id="inputPassword2"
-                  placeholder="Input Post Office Branch Name">
+                  placeholder="Input Post Office Branch Name" name="nameInputOffice"
+                  value={{res_data_name.post_office}}>
                 <div style="margin-left:5px">
                   <small class="text-muted">For eg. New Delhi</small>
                 </div>
@@ -112,13 +111,45 @@
                 <button type="submit" class="btn btn-primary mb-3">Check</button>
               </div>
             </form>
+ {% endcomment %}
 
+            {% comment %} <p style="margin-left:10px"><b>{{res_data_name.message}}</b></p>
+            <table class="table table-hover">
+              <thead>
+                <tr> {% endcomment %}
+                  {% comment %} <th scope="col">#</th> {% endcomment %}
+                  {% comment %} <th scope="col">Name</th>
+                  <th scope="col">Branch Type</th>
+                  <th scope="col">Delivery Status</th>
+                  <th scope="col">State</th>
+                  <th scope="col">District</th>
+                  <th scope="col">Division</th>
+                  <th scope="col">Region</th>
+                  <th scope="col">Pin Code</th>
+                </tr>
+              </thead>
+              <tbody> {% endcomment %}
 
+                {% comment %} {% for data in res_data_name.name%}
+                <tr> {% endcomment %}
+                  {% comment %} <th scope="row">{{i}}</th> {% endcomment %}
+                  {% comment %} <td>{{data.Name}}</td>
+                  <td>{{data.BranchType}}</td>
+                  <td>{{data.DeliveryStatus}}</td>
+                  <td>{{data.State}}</td>
+                  <td>{{data.District}}</td>
+                  <td>{{data.Division}}</td>
+                  <td>{{data.Region}}</td>
+                  <td>{{data.Pincode}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
 
 
           </div>
         </div>
-      </div>
+      </div> {% endcomment %}
 
 
       {% comment %} <div class="accordion-item">
