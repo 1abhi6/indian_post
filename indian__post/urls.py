@@ -19,6 +19,7 @@ from indian__post import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.home),
+    path("", views.home),
+    path("map/", views.map, name="map")
     # path("post/",views.post,name="post")
 ]
